@@ -4,12 +4,13 @@
     name: Execute python examples/run_glue.py
     image: juhavalohai/hugglue
     command:
-      - python /valohai/repository/examples/run_glue.py --data-dir {parameters} --do_train
+      - pip install --no-deps -e /valohai/repository
+      - python /valohai/repository/examples/run_glue.py {parameters} --do_train
     parameters:
       - name: data_dir
         pass-as: --data_dir={v}
         type: string
-        default: /glue_data/SST-2
+        default: /glue_data/MRPC
       - name: model_type
         pass-as: --model_type={v}
         type: string
@@ -21,7 +22,7 @@
       - name: task_name
         pass-as: --task_name={v}
         type: string
-        default: sst-2
+        default: MRPC
       - name: output_dir
         pass-as: --output_dir={v}
         type: string
