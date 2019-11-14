@@ -1,0 +1,28 @@
+---
+
+- step:
+    name: Execute python examples/run_glue.py
+    image: juhavalohai/hugglue
+    command:
+      - python /valohai/repository/examples/run_glue.py --data-dir {parameters} --do_train
+    parameters:
+      - name: data_dir
+        pass-as: --data_dir={v}
+        type: string
+        default: /glue_data/SST-2
+      - name: model_type
+        pass-as: --model_type={v}
+        type: string
+        default: bert
+      - name: model_name_or_path
+        pass-as: --model_name_or_path={v}
+        type: string
+        default: bert-base-uncased
+      - name: task_name
+        pass-as: --task_name={v}
+        type: string
+        default: sst-2
+      - name: output_dir
+        pass-as: --output_dir={v}
+        type: string
+        default: /valohai/outputs
